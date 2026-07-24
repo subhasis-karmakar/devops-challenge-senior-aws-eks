@@ -291,15 +291,7 @@ Before deploying the project, ensure you have:
 
 - An AWS Account
 - A GitHub Account
-- An IAM user with permissions to manage:
-  - Amazon VPC
-  - Amazon EC2
-  - Amazon EKS
-  - Amazon ECR
-  - IAM
-  - Elastic Load Balancer (ALB)
-  - Amazon S3
-  - Amazon DynamoDB
+- An IAM user with "AdministratorAccess" policy and generate AccessKeyID and SecretAccessKey for AWS cli
 
 ---
 
