@@ -1,4 +1,4 @@
-name: Terraform Validation
+name: EKS-Infra-Build
 
 on:
   workflow_dispatch:
