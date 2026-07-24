@@ -8,7 +8,7 @@ crash.log
 crash.*.log
 
 # Local variable files (may contain secrets)
-terraform.tfvars
+#terraform.tfvars
 terraform.tfvars.json
 *.auto.tfvars
 *.auto.tfvars.json
