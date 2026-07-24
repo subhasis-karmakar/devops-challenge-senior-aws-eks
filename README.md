@@ -247,19 +247,19 @@ The project uses three manual GitHub Actions workflows for infrastructure provis
 
 ## Amazon EKS Cluster
 
-![Amazon EKS](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/eks-cluster.jpq)
+![Amazon EKS](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/eks-cluster.jpg)
 
 ---
 
 ## Amazon ECR Repository
 
-![Amazon ECR](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/ecr.jpq)
+![Amazon ECR](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/ecr.jpg)
 
 ---
 
 ## AWS Application Load Balancer
 
-![ALB](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/alb.jpq)
+![ALB](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/alb.jpg)
 
 ---
 
