@@ -1,10 +1,11 @@
-name: EKS-Infra-Build
+name: Terraform Validation
 
 on:
   workflow_dispatch:
 
 jobs:
   terraform:
+    name: Terraform Validate
     runs-on: ubuntu-latest
 
     defaults:
@@ -17,6 +18,11 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.13.3"
+
+      - name: Verify Terraform Version
+        run: terraform version
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -26,7 +32,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -backend-config=backend.hcl
 
       - name: Terraform Format Check
         run: terraform fmt -check
