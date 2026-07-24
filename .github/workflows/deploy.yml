@@ -52,3 +52,29 @@ jobs:
       - name: Verify Ingress
         run: |
           kubectl get ingress -n particle41
+
+      - name: Wait for ALB Address
+        run: |
+          echo "Waiting for AWS Load Balancer to become available..."
+
+          for i in {1..30}; do
+            ADDRESS=$(kubectl get ingress particle41-ingress \
+              -n particle41 \
+              -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+
+            if [ -n "$ADDRESS" ]; then
+              echo "ALB is ready."
+              echo "ALB_ADDRESS=$ADDRESS" >> $GITHUB_ENV
+              break
+            fi
+
+            echo "Attempt $i/30 - ALB not ready yet..."
+            sleep 10
+          done
+
+      - name: Display Application URL
+        run: |
+          echo "======================================"
+          echo "Application URL"
+          echo "http://$ALB_ADDRESS"
+          echo "======================================"
