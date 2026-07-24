@@ -10,6 +10,9 @@ jobs:
     permissions:
       contents: read
 
+    env:
+      IMAGE_NAME: ${{ secrets.ECR_REPOSITORY }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -27,14 +30,28 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.ECR_REPOSITORY }} .
+          docker build \
+            -f app/Dockerfile \
+            -t $IMAGE_NAME:latest \
+            -t ${{ steps.login-ecr.outputs.registry }}/$IMAGE_NAME:${{ github.sha }} \
+            app
 
-      - name: Tag Docker Image
-        run: |
-          docker tag ${{ secrets.ECR_REPOSITORY }}:latest \
-          ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
-
-      - name: Push Docker Image
+      - name: Push Docker Image (SHA Tag)
         run: |
           docker push \
-          ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/$IMAGE_NAME:${{ github.sha }}
+
+      - name: Push Docker Image (Latest Tag)
+        run: |
+          docker tag \
+            $IMAGE_NAME:latest \
+            ${{ steps.login-ecr.outputs.registry }}/$IMAGE_NAME:latest
+
+          docker push \
+            ${{ steps.login-ecr.outputs.registry }}/$IMAGE_NAME:latest
+
+      - name: Image Details
+        run: |
+          echo "Image pushed successfully:"
+          echo "${{ steps.login-ecr.outputs.registry }}/$IMAGE_NAME:${{ github.sha }}"
+          echo "${{ steps.login-ecr.outputs.registry }}/$IMAGE_NAME:latest"
