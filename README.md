@@ -237,49 +237,47 @@ Application Available
 
 The project uses three manual GitHub Actions workflows for infrastructure provisioning, container image build, and Kubernetes deployment.
 
-![GitHub Actions](docs/images/github-actions.jpg)
-
 ---
 
 ## GitHub Actions
 
-![GitHub Actions](docs/images/github-actions.jpg)
+![GitHub Actions](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/github-actions.jpg)
 
 ---
 
 ## Amazon EKS Cluster
 
-![Amazon EKS](docs/images/eks-cluster.jpq)
+![Amazon EKS](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/eks-cluster.jpq)
 
 ---
 
 ## Amazon ECR Repository
 
-![Amazon ECR](docs/images/ecr.jpq)
+![Amazon ECR](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/ecr.jpq)
 
 ---
 
 ## AWS Application Load Balancer
 
-![ALB](docs/images/alb.jpq)
+![ALB](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/alb.jpq)
 
 ---
 
 ## Running Application
 
-![Application](docs/images/application.jpg)
+![Application](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/application.jpg)
 
 ---
 
 ## Kubernetes Pods
 
-![Pods](docs/images/pods.jpg)
+![Pods](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/pods.jpg)
 
 ---
 
 ## Kubernetes Ingress
 
-![Ingress](docs/images/ingress.jpg)
+![Ingress](https://raw.githubusercontent.com/subhasis-karmakar/devops-challenge-senior-aws-eks/main/docs/images/ingress.jpg)
 
 
 
