@@ -53,16 +53,31 @@ jobs:
         run: |
           kubectl get ingress -n particle41
 
+      - name: Get ALB DNS Name
+        id: alb
+        run: |
+          ALB_DNS=$(aws elbv2 describe-load-balancers \
+            --names particle41-alb \
+            --query 'LoadBalancers[0].DNSName' \
+            --output text)
+
+          echo "ALB_DNS=$ALB_DNS" >> $GITHUB_ENV
+
+          echo "========================================="
+          echo "Application URL"
+          echo "http://$ALB_DNS"
+          echo "========================================="
+
       - name: Publish Deployment Summary
         run: |
-          ALB_ADDRESS=$(kubectl get ingress particle41-ingress \
-            -n particle41 \
-            -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
-
           {
-            echo "## Deployment Successful"
+            echo "##Deployment Successful"
             echo ""
             echo "| Resource | Value |"
             echo "|----------|-------|"
-            echo "| ALB URL | http://$ALB_ADDRESS |"
+            echo "| Namespace | particle41 |"
+            echo "| Deployment | particle41-app |"
+            echo "| Service | particle41-service |"
+            echo "| Ingress | particle41-ingress |"
+            echo "| ALB URL | http://$ALB_DNS |"
           } >> $GITHUB_STEP_SUMMARY
